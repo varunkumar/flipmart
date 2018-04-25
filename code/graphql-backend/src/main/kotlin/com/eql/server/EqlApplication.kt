@@ -1,19 +1,22 @@
 package com.eql.server
 
+import com.beyondeye.graphkool.newGraphQL
+import com.eql.schema.EqlSchema
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.fasterxml.jackson.module.kotlin.readValue
 import graphql.ExecutionResult
 import spark.Request
 import spark.Spark.get
 import spark.Spark.post
+import spark.kotlin.get
 import java.io.IOException
 import javax.xml.ws.http.HTTPException
 
 object EqlApplication {
 
-    val mapper = jacksonObjectMapper()
+    private val mapper = jacksonObjectMapper()
 
-    // val graphQL = newGraphQL(mySchema)
+    private val graphQL = newGraphQL(EqlSchema.eqlSchema)
 
     @JvmStatic
     @Suppress("UNCHECKED_CAST")
@@ -30,11 +33,11 @@ object EqlApplication {
                 val variables = getVariables(payload)
 
                 // Execute query and get data or any errors
-                // val executionResult = graphQL.execute(query, null, null, variables)
-                // val result = getResult(executionResult)
+                val executionResult = graphQL.execute(query, null, null, variables)
+                val result = getResult(executionResult)
 
                 response.type("application/json")
-                mapper.writeValueAsString("test output")
+                mapper.writeValueAsString(result)
             }
         }
     }
