@@ -4,13 +4,15 @@ import com.beyondeye.graphkool.newGraphQL
 import com.eql.schema.EqlSchema
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.fasterxml.jackson.module.kotlin.readValue
+import graphql.ExecutionInput
 import graphql.ExecutionResult
 import spark.Request
-import spark.Spark.get
 import spark.Spark.post
+import spark.Spark.staticFiles
 import spark.kotlin.get
 import java.io.IOException
 import javax.xml.ws.http.HTTPException
+import kotlin.collections.set
 
 object EqlApplication {
 
@@ -19,11 +21,12 @@ object EqlApplication {
     private val graphQL = newGraphQL(EqlSchema.eqlSchema)
 
     @JvmStatic
-    @Suppress("UNCHECKED_CAST")
     fun main(args: Array<String>) {
 
+        staticFiles.location("/public")
+
         // Test endpoint
-        get("/hello") { _, _ -> "hello world"}
+        get("/hello") { "hello world" }
 
         post("/product") { request, response ->
             val payload = getPayload(request)
@@ -33,7 +36,11 @@ object EqlApplication {
                 val variables = getVariables(payload)
 
                 // Execute query and get data or any errors
-                val executionResult = graphQL.execute(query, null, null, variables)
+                val executionInput = ExecutionInput.newExecutionInput()
+                        .query(query)
+                        .variables(variables)
+                        .build()
+                val executionResult = graphQL.execute(executionInput)
                 val result = getResult(executionResult)
 
                 response.type("application/json")
@@ -42,35 +49,25 @@ object EqlApplication {
         }
     }
 
-    /**
-     * Get payload from the request.
-     */
-    fun getPayload(request: Request): Map<String, Any>? {
+    private fun getPayload(request: Request): Map<String, Any>? {
         try {
-            return mapper.readValue<Map<String, Any>>(request.body())
+            return mapper.readValue(request.body())
         } catch (e: IOException) {
             HTTPException(500)
-            return null
         }
+        return null
     }
 
-    /**
-     * Get any variables passed in the request.
-     */
-    @Suppress("UNCHECKED_CAST")
-    fun getVariables(payload: Map<String, *>) =
+    private fun getVariables(payload: Map<String, Any>) =
             payload.getOrElse("variables") { emptyMap<String, Any>() } as Map<String, Any>
 
-    /**
-     * Get any errors or data from [executionResult].
-     */
-    fun getResult(executionResult: ExecutionResult): MutableMap<String, Any> {
+    private fun getResult(executionResult: ExecutionResult): MutableMap<String, Any> {
         val result = mutableMapOf<String, Any>()
         when {
             executionResult.errors.isNotEmpty() ->
-                result.put("errors", executionResult.errors)
+                result["errors"] = executionResult.errors
             else ->
-                result.put("data", executionResult.getData())
+                result["data"] = executionResult.getData()
         }
         return result
     }

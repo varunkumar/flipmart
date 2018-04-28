@@ -1,19 +1,16 @@
 package com.eql.data
 
 import graphql.schema.DataFetcher
-import graphql.schema.TypeResolver
-import com.eql.schema.types.productType
 
 object ProductDataUtils {
 
-    fun getProduct(id: String) =
-            when {
-                ProductData.productData[id] != null -> ProductData.productData[id]
-                else -> null
-            }
+    val productsDataFetcher = DataFetcher {
+        val ids: List<String>? = it.arguments["ids"] as List<String>?
+        ProductData.productData.filter { p -> ids!!.contains(p.key) }.values
+    }
 
-    val productDataFetcher = DataFetcher {
-        ProductData.productData[it.arguments["id"]]
+    val allProductsDataFetcher = DataFetcher {
+        ProductData.productData.values
     }
 
 }
