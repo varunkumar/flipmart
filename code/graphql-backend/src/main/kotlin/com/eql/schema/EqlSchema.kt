@@ -1,8 +1,9 @@
 package com.eql.schema
 
 import com.beyondeye.graphkool.*
-import com.eql.data.ProductDataUtils
-import com.eql.schema.types.productType
+import com.eql.datafetcher.ProductDataFetcher
+import com.eql.schema.types.productInputType
+import com.eql.schema.types.productOutputType
 import graphql.Scalars.GraphQLString
 import graphql.schema.GraphQLFieldDefinition
 import graphql.schema.GraphQLObjectType
@@ -14,15 +15,24 @@ object EqlSchema {
             newObject("QueryType")
                     .field(GraphQLFieldDefinition.Builder()
                             .name("products")
-                            .type(listOfObjs(productType))
+                            .type(listOfObjs(productOutputType))
                             .argument(newa = +"ids"..!listOfObjs(GraphQLString) description "ids of the products.")
-                            .dataFetcher(ProductDataUtils.productsDataFetcher))
+                            .dataFetcher(ProductDataFetcher.getProducts))
                     .field(GraphQLFieldDefinition.Builder()
                             .name("allProducts")
-                            .type(listOfObjs(productType))
-                            .dataFetcher(ProductDataUtils.allProductsDataFetcher))
+                            .type(listOfObjs(productOutputType))
+                            .dataFetcher(ProductDataFetcher.getAllProducts))
+
+    private val mutationType: GraphQLObjectType.Builder =
+            newObject("MutationType")
+                    .field(GraphQLFieldDefinition.Builder()
+                            .name("addProduct")
+                            .type(productOutputType)
+                            .argument(+"product"..productInputType description "product to be added")
+                            .dataFetcher(ProductDataFetcher.addProduct))
 
     val eqlSchema: GraphQLSchema = newGraphQLSchema(queryType)
+            .mutation(mutationType)
             .build()
 
 }

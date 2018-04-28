@@ -5,7 +5,7 @@ import graphql.Scalars.GraphQLFloat
 import graphql.Scalars.GraphQLString
 import graphql.schema.GraphQLObjectType
 
-val productType: GraphQLObjectType =
+val productOutputType: GraphQLObjectType =
         newObject("Product")
                 .description("A Product")
                 .field("id"

@@ -32,6 +32,7 @@ object EqlApplication {
             val payload = getPayload(request)
 
             payload?.let {
+
                 val query = payload["query"].toString()
                 val variables = getVariables(payload)
 
