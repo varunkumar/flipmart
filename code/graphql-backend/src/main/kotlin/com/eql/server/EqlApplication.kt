@@ -28,7 +28,7 @@ object EqlApplication {
         // Test endpoint
         get("/hello") { "hello world" }
 
-        post("/product") { request, response ->
+        post("/eql") { request, response ->
             val payload = getPayload(request)
 
             payload?.let {
