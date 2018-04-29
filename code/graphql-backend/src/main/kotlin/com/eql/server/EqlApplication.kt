@@ -59,6 +59,7 @@ object EqlApplication {
         return null
     }
 
+    @Suppress("UNCHECKED_CAST")
     private fun getVariables(payload: Map<String, Any>) =
             payload.getOrElse("variables") { emptyMap<String, Any>() } as Map<String, Any>
 
