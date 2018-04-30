@@ -8,7 +8,7 @@ import graphql.schema.GraphQLInputObjectType
 
 val productInputType: GraphQLInputObjectType =
         GraphQLInputObjectType.newInputObject()
-                .name("product")
+                .name("productInput")
                 .field(GraphQLInputObjectField.newInputObjectField()
                         .name("name")
                         .type(GraphQLString)

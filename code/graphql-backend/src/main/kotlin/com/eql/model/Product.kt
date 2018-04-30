@@ -2,9 +2,7 @@ package com.eql.model
 
 import java.time.Instant
 
-data class Product(var name: String,
-                   var stockQuantity: Int,
-                   var cost: Double) {
+data class Product(var name: String, var stockQuantity: Int, var cost: Double) {
     var id: String? = null
     var description: String? = null
     var tags: List<String>? = null
