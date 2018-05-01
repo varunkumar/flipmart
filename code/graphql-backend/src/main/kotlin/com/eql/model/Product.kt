@@ -12,4 +12,5 @@ data class Product(var name: String, var stockQuantity: Int, var cost: Double) {
     var discontinued: Boolean? = null
     var productCategory: ProductCategory? = null
     var dimensions: Dimensions? = null
+    var imageUrl: String? = null
 }

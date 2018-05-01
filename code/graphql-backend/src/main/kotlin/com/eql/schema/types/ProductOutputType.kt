@@ -32,4 +32,6 @@ val productOutputType: GraphQLObjectType =
                         ..productCategoryOutputType description "The product category")
                 .field("dimensions"
                         ..dimensionsOutputType description "The dimensions of the product")
+                .field("imageUrl"
+                        ..GraphQLString description "The image URL of the product")
                 .build()

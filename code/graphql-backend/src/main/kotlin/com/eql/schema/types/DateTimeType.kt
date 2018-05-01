@@ -7,7 +7,7 @@ import graphql.schema.CoercingSerializeException
 import graphql.schema.GraphQLScalarType
 import java.time.Instant
 
-val dateTimeType: GraphQLScalarType = GraphQLScalarType("DateTime", "Date Time type",
+val dateTimeType: GraphQLScalarType = GraphQLScalarType("dateTime", "Date Time type",
         object : Coercing<Instant, String> {
 
             private fun convertImpl(input: Any): Instant? {
