@@ -1,7 +1,9 @@
 package com.eql.schema
 
 import com.beyondeye.graphkool.*
+import com.eql.datafetcher.OrderDataFetcher
 import com.eql.datafetcher.ProductDataFetcher
+import com.eql.schema.types.orderOutputType
 import com.eql.schema.types.productInputType
 import com.eql.schema.types.productOutputType
 import graphql.Scalars.GraphQLString
@@ -22,6 +24,10 @@ object EqlSchema {
                             .name("allProducts")
                             .type(listOfObjs(productOutputType))
                             .dataFetcher(ProductDataFetcher.getAllProducts))
+                    .field(GraphQLFieldDefinition.Builder()
+                            .name("allOrders")
+                            .type(listOfObjs(orderOutputType))
+                            .dataFetcher(OrderDataFetcher.getAllOrders))
 
     private val mutationType: GraphQLObjectType.Builder =
             newObject("MutationType")

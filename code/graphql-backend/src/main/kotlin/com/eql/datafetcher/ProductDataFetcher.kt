@@ -2,27 +2,28 @@ package com.eql.datafetcher
 
 import com.eql.dao.ProductDao
 import com.eql.model.Product
-import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
+import com.eql.util.getObjectMapper
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
 import graphql.schema.DataFetcher
 
 object ProductDataFetcher {
 
-    private val mapper = jacksonObjectMapper()
-    private val productDao = ProductDao()
+    private val mapper = getObjectMapper()
 
     val getProducts = DataFetcher {
         val ids: List<String>? = it.arguments["ids"] as List<String>?
-        productDao.getProducts(ids!!)
+        ProductDao.getProducts(ids!!)
     }
 
     val getAllProducts = DataFetcher {
-        productDao.getAllProducts()
+        ProductDao.getAllProducts()
     }
 
     val addProduct = DataFetcher {
+        mapper.registerModule(JavaTimeModule())
         val inputString = mapper.writeValueAsString(it.arguments["product"])
         val product: Product = mapper.readValue(inputString, Product::class.java) as Product
-        productDao.addProduct(product)
+        ProductDao.addProduct(product)
     }
 
 }

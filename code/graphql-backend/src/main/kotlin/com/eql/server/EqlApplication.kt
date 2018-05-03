@@ -2,6 +2,7 @@ package com.eql.server
 
 import com.beyondeye.graphkool.newGraphQL
 import com.eql.schema.EqlSchema
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.fasterxml.jackson.module.kotlin.readValue
 import graphql.ExecutionInput
@@ -23,12 +24,13 @@ object EqlApplication {
     @JvmStatic
     fun main(args: Array<String>) {
 
+        mapper.registerModule(JavaTimeModule())
         staticFiles.location("/public")
 
         // Test endpoint
         get("/hello") { "hello world" }
 
-        post("/product") { request, response ->
+        post("/eql") { request, response ->
             val payload = getPayload(request)
 
             payload?.let {
@@ -59,6 +61,7 @@ object EqlApplication {
         return null
     }
 
+    @Suppress("UNCHECKED_CAST")
     private fun getVariables(payload: Map<String, Any>) =
             payload.getOrElse("variables") { emptyMap<String, Any>() } as Map<String, Any>
 

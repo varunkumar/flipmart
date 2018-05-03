@@ -2,24 +2,24 @@ package com.eql.dao
 
 import com.eql.model.Product
 
-class ProductDao {
+object ProductDao {
 
     private var key = 100
     private var productData = mutableMapOf<String, Product>()
 
     init {
         val onePlusSix = Product(
-                id = null,
                 name = "One Plus Six",
                 cost = 35000.99,
-                tags = listOf("Mobile", "Phone"))
+                stockQuantity = 100)
+        onePlusSix.tags = listOf("Mobile", "Phone")
         addProduct(onePlusSix)
 
         val surfacePro = Product(
-                id = null,
                 name = "Surface Pro",
                 cost = 125000.95,
-                tags = listOf("Tab", "Microsoft"))
+                stockQuantity = 200)
+        surfacePro.tags = listOf("Tab", "Microsoft")
         addProduct(surfacePro)
     }
 

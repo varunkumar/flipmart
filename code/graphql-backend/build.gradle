@@ -27,7 +27,8 @@ dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
 
     // Jackson Kotlin
-    compile "com.fasterxml.jackson.module:jackson-module-kotlin:2.8.7"
+    compile "com.fasterxml.jackson.module:jackson-module-kotlin:2.9.5"
+    compile "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.9.5"
 
     // Spark
     compile 'com.sparkjava:spark-kotlin:1.0.0-alpha'
