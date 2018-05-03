@@ -19,16 +19,17 @@ enum class ShippingStatus {
     FAILED_TO_DELIVER
 }
 
-data class Order(var id: String?,
-                 var customerId: String,
+data class Order(var customerId: String,
                  var orderStatus: OrderStatus,
                  var shippingStatus: ShippingStatus,
                  var products: List<Product>,
                  var totalPrice: Double,
-                 var discounts: Double?,
-                 var billingAddress: String?,
                  var shippingAddress: String,
-                 var mobile: String,
-                 var email: String?,
-                 var comments: String?,
-                 var tags: List<String>?)
+                 var mobile: String) {
+    var id: String? = null
+    var discounts: Double? = null
+    var billingAddress: String? = null
+    var email: String? = null
+    var comments: String? = null
+    var tags: List<String>? = null
+}

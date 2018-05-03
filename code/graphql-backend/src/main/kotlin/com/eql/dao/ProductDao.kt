@@ -2,7 +2,7 @@ package com.eql.dao
 
 import com.eql.model.Product
 
-class ProductDao {
+object ProductDao {
 
     private var key = 100
     private var productData = mutableMapOf<String, Product>()
