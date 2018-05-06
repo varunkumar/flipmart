@@ -24,7 +24,7 @@ object ProductDao {
     }
 
     fun getProducts(ids: List<String>): Collection<Product> {
-        return productData.filter { p -> ids!!.contains(p.key) }.values
+        return productData.filter { p -> ids.contains(p.key) }.values
     }
 
     fun getAllProducts(): MutableCollection<Product> {

@@ -15,7 +15,7 @@ object OrderDao {
                 customerId = "mehtasan",
                 orderStatus = OrderStatus.CREATED,
                 shippingStatus = ShippingStatus.WORKING,
-                products = ProductDao.getAllProducts().toList(),
+                productIds = ProductDao.getAllProducts().mapNotNull { it.id },
                 totalPrice = 50000.33,
                 shippingAddress = "Arc 12C",
                 mobile = "9988776655")
@@ -25,7 +25,7 @@ object OrderDao {
                 customerId = "nagrajv",
                 orderStatus = OrderStatus.PLACED,
                 shippingStatus = ShippingStatus.READY_TO_SHIP,
-                products = ProductDao.getProducts(listOf("100")).toList(),
+                productIds = listOf("100"),
                 totalPrice = 75000.99,
                 shippingAddress = "Foo Bar",
                 mobile = "9977553321")
@@ -33,8 +33,8 @@ object OrderDao {
 
     }
 
-    fun getOrders(ids: List<String>): Collection<Order> {
-        return orderData.filter { p -> ids!!.contains(p.key) }.values
+    fun getOrders(customerId: String): Collection<Order> {
+        return orderData.filter { p -> customerId.contains(p.value.customerId) }.values
     }
 
     fun getAllOrders(): MutableCollection<Order> {
@@ -44,6 +44,8 @@ object OrderDao {
     fun addOrder(order: Order): Order? {
         val orderKey = key.toString()
         order.id = orderKey
+        order.products = ProductDao.getProducts(order.productIds).toList()
+        order.totalPrice = order.products!!.map { it.cost }.sum()
         orderData[orderKey] = order
         key++
         return orderData[orderKey]

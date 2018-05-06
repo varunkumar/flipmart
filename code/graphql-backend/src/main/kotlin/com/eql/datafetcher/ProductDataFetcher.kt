@@ -10,6 +10,7 @@ object ProductDataFetcher {
 
     private val mapper = getObjectMapper()
 
+    @Suppress("UNCHECKED_CAST")
     val getProducts = DataFetcher {
         val ids: List<String>? = it.arguments["ids"] as List<String>?
         ProductDao.getProducts(ids!!)

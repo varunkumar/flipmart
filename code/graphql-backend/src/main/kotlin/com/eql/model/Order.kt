@@ -22,7 +22,7 @@ enum class ShippingStatus {
 data class Order(var customerId: String,
                  var orderStatus: OrderStatus,
                  var shippingStatus: ShippingStatus,
-                 var products: List<Product>,
+                 var productIds: List<String>,
                  var totalPrice: Double,
                  var shippingAddress: String,
                  var mobile: String) {
@@ -32,4 +32,5 @@ data class Order(var customerId: String,
     var email: String? = null
     var comments: String? = null
     var tags: List<String>? = null
+    var products: List<Product>? = null
 }

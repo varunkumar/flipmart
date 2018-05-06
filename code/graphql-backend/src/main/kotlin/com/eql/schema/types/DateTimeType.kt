@@ -20,8 +20,7 @@ val dateTimeType: GraphQLScalarType = GraphQLScalarType("dateTime", "Date Time t
                 if (input is Instant) {
                     return input.toString()
                 } else {
-                    val result = convertImpl(input)
-                            ?: throw CoercingSerializeException("Invalid value '$input' for Instant")
+                    convertImpl(input) ?: throw CoercingSerializeException("Invalid value '$input' for Instant")
                     return input.toString()
                 }
             }

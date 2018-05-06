@@ -24,7 +24,7 @@ Header: Content-Type: application/graphql
 Body: {"query":"{product(id:\"100\") {id,name,cost,tags}}"}
 ```
 
-### Sample Query
+### Sample Queries
 ```json
 query {
   allProducts {
@@ -34,9 +34,38 @@ query {
     saleTo
   }
 }
+
+
+query {
+  allOrders {
+    id
+    customerId  
+  }
+}
+
+
+query {
+  products(ids: "100") {
+    id
+    name
+    cost
+    tags
+    stockQuantity
+    saleFrom
+    description
+  }
+}
+
+
+query {
+  orders (customerId:"mehtasan") {
+    id,
+    totalPrice
+  }
+}
 ```
 
-### Sample Mutation
+### Sample Mutations
 ```json
 mutation {
   addProduct (product: {
@@ -49,4 +78,20 @@ mutation {
     saleTo
   }
 }
-```
+
+
+mutation {
+  addOrder(order: {
+    customerId: "mehtasan",
+    orderStatus: CREATED,
+    shippingStatus: WORKING,
+    productIds: ["100", "101"],
+    totalPrice: 26000,
+    shippingAddress: "Arc",
+    mobile: "9988998899"
+  }) {
+    customerId
+    orderStatus
+  }
+}
+```json
