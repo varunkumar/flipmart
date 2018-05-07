@@ -12,6 +12,7 @@ val orderOutputType: GraphQLObjectType =
                 .field("customerId" ..!GraphQLString description "The customerId of the order")
                 .field("orderStatus" ..!orderStatusType description "The orderStatus of the order")
                 .field("shippingStatus" ..!shippingStatusType description "The shippingStatus of the order")
+                .field("productIds" ..listOfObjs(GraphQLString) description "The product ids of the order")
                 .field("products" ..!listOfObjs(productOutputType) description "The products of the order")
                 .field("totalPrice" ..!GraphQLFloat description "The totalPrice of the order")
                 .field("discounts" ..GraphQLFloat description "The discounts of the order")

@@ -1,40 +1,43 @@
 package com.eql.dao
 
 import com.eql.model.Order
-import com.eql.model.OrderStatus
-import com.eql.model.ShippingStatus
+import com.eql.util.ORDERS_FILE
+import com.eql.util.getObjectMapper
+import com.eql.util.writeToFile
+import java.io.BufferedReader
+import java.io.FileReader
+
+
 
 object OrderDao {
 
     private var key = 100
-    private var orderData = mutableMapOf<String, Order>()
+    private val orderData = mutableMapOf<String, Order>()
+    private val mapper = getObjectMapper()
 
     init {
-
-        val sanketOrder = Order(
-                customerId = "mehtasan",
-                orderStatus = OrderStatus.CREATED,
-                shippingStatus = ShippingStatus.WORKING,
-                products = ProductDao.getAllProducts().toList(),
-                totalPrice = 50000.33,
-                shippingAddress = "Arc 12C",
-                mobile = "9988776655")
-        addOrder(sanketOrder)
-
-        val varunOrder = Order(
-                customerId = "nagrajv",
-                orderStatus = OrderStatus.PLACED,
-                shippingStatus = ShippingStatus.READY_TO_SHIP,
-                products = ProductDao.getProducts(listOf("100")).toList(),
-                totalPrice = 75000.99,
-                shippingAddress = "Foo Bar",
-                mobile = "9977553321")
-        addOrder(varunOrder)
-
+        loadDatabase()
     }
 
-    fun getOrders(ids: List<String>): Collection<Order> {
-        return orderData.filter { p -> ids!!.contains(p.key) }.values
+    private fun loadDatabase() {
+        val reader = BufferedReader(FileReader(ORDERS_FILE))
+        for (line in reader.lines()) {
+            try {
+                val order: Order = mapper.readValue<Order>(line, Order::class.java)
+                if (order.id.isNullOrBlank()) {
+                    continue
+                }
+                orderData[order.id!!] = order
+            }catch (e: Exception) {
+            }
+        }
+        key = orderData.mapNotNull { d -> d.key.toInt() }.max() ?: (key - 1)
+        key ++
+        println("Current orders count: " + orderData.count())
+    }
+
+    fun getOrders(customerId: String): Collection<Order> {
+        return orderData.filter { p -> customerId.contains(p.value.customerId) }.values
     }
 
     fun getAllOrders(): MutableCollection<Order> {
@@ -44,6 +47,9 @@ object OrderDao {
     fun addOrder(order: Order): Order? {
         val orderKey = key.toString()
         order.id = orderKey
+        order.products = ProductDao.getProducts(order.productIds).toList()
+        order.totalPrice = order.products!!.map { it.cost }.sum()
+        writeToFile(ORDERS_FILE, mapper.writeValueAsString(order))
         orderData[orderKey] = order
         key++
         return orderData[orderKey]

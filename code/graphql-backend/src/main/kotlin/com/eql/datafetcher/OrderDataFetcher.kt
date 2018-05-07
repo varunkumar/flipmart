@@ -10,8 +10,8 @@ object OrderDataFetcher {
     private val mapper = getObjectMapper()
 
     val getOrders = DataFetcher {
-        val ids: List<String>? = it.arguments["ids"] as List<String>?
-        OrderDao.getOrders(ids!!)
+        val customerId: String? = it.arguments["customerId"] as String
+        OrderDao.getOrders(customerId!!)
     }
 
     val getAllOrders = DataFetcher {

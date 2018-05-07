@@ -3,6 +3,7 @@ package com.eql.schema
 import com.beyondeye.graphkool.*
 import com.eql.datafetcher.OrderDataFetcher
 import com.eql.datafetcher.ProductDataFetcher
+import com.eql.schema.types.orderInputType
 import com.eql.schema.types.orderOutputType
 import com.eql.schema.types.productInputType
 import com.eql.schema.types.productOutputType
@@ -25,6 +26,11 @@ object EqlSchema {
                             .type(listOfObjs(productOutputType))
                             .dataFetcher(ProductDataFetcher.getAllProducts))
                     .field(GraphQLFieldDefinition.Builder()
+                            .name("orders")
+                            .type(listOfObjs(orderOutputType))
+                            .argument(newa = +"customerId"..!GraphQLString description "customer ID")
+                            .dataFetcher(OrderDataFetcher.getOrders))
+                    .field(GraphQLFieldDefinition.Builder()
                             .name("allOrders")
                             .type(listOfObjs(orderOutputType))
                             .dataFetcher(OrderDataFetcher.getAllOrders))
@@ -36,6 +42,11 @@ object EqlSchema {
                             .type(productOutputType)
                             .argument(+"product"..productInputType description "product to be added")
                             .dataFetcher(ProductDataFetcher.addProduct))
+                    .field(GraphQLFieldDefinition.Builder()
+                            .name("addOrder")
+                            .type(orderOutputType)
+                            .argument(+"order"..orderInputType description "order to be placed")
+                            .dataFetcher(OrderDataFetcher.addOrder))
 
     val eqlSchema: GraphQLSchema = newGraphQLSchema(queryType)
             .mutation(mutationType)
