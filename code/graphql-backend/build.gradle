@@ -23,6 +23,8 @@ repositories {
 }
 
 dependencies {
+    compile "javax.xml.ws:jaxws-api:2.2.11"
+
     // Kotlin
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
 
