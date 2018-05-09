@@ -1,6 +1,10 @@
 ### Core concepts
 - Schema
 - Query
+  - Type
+  - Fields
+  - Aliases
+  - Arguments
 - Mutation
 - Subscription
 - Defer, live, stream, etc
