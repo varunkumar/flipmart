@@ -1,8 +1,13 @@
 # eQL Backend
 
 ### How to run project?
-```
+```bash
 ./gradlew clean build run
+```
+
+### How to start Apollo Engine Proxy?
+```bash
+ENGINE_API_KEY="<<API_KEY>>" node index.js
 ```
 
 ### How to verify server?
@@ -17,15 +22,17 @@ Simple way is to use GraphiQL
 http://localhost:4567/
 ```
 
+Use port 3000 when Apollo Engine proxy is used.
+
 Through a post request:
 ```
-URL: http://localhost:4567/product
-Header: Content-Type: application/graphql
-Body: {"query":"{product(id:\"100\") {id,name,cost,tags}}"}
+URL: http://localhost:4567/eql
+Header: Content-Type: application/json
+Body: {"query":"{products(ids:\"100\") {id,name,cost,tags}}"}
 ```
 
 ### Sample Queries
-```json
+```graphql
 query {
   allProducts {
     name
@@ -66,7 +73,7 @@ query {
 ```
 
 ### Sample Mutations
-```json
+```graphql
 mutation {
   addProduct (product: {
     name:"LG AC",
@@ -94,4 +101,4 @@ mutation {
     orderStatus
   }
 }
-```json
+```

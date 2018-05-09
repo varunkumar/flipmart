@@ -1,15 +1,15 @@
 package com.eql.server
 
-import com.beyondeye.graphkool.newGraphQL
 import com.eql.schema.EqlSchema
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.fasterxml.jackson.module.kotlin.readValue
 import graphql.ExecutionInput
 import graphql.ExecutionResult
+import graphql.GraphQL.newGraphQL
+import graphql.execution.instrumentation.tracing.TracingInstrumentation
 import spark.Request
-import spark.Spark.post
-import spark.Spark.staticFiles
+import spark.Spark.*
 import spark.kotlin.get
 import java.io.IOException
 import javax.xml.ws.http.HTTPException
@@ -19,7 +19,7 @@ object EqlApplication {
 
     private val mapper = jacksonObjectMapper()
 
-    private val graphQL = newGraphQL(EqlSchema.eqlSchema)
+    private val graphQL = (newGraphQL(EqlSchema.eqlSchema).instrumentation(TracingInstrumentation()).build())
 
     @JvmStatic
     fun main(args: Array<String>) {
@@ -70,8 +70,10 @@ object EqlApplication {
         when {
             executionResult.errors.isNotEmpty() ->
                 result["errors"] = executionResult.errors
-            else ->
+            else -> {
                 result["data"] = executionResult.getData()
+                result["extensions"] = executionResult.getExtensions()
+            }
         }
         return result
     }
