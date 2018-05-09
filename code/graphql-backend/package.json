@@ -1,0 +1,12 @@
+{
+  "name": "graphql-backend-proxy",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "apollo-engine": "^1.1.1"
+  }
+}
