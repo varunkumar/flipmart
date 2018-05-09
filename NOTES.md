@@ -10,11 +10,11 @@
 
 ### Client
 - Caching - updation, polling, refetching
-  - Local state management
-  - Pagination
-  - Prefetching
-  - Dev tools
-  - Tooling - eslint
+- Local state management
+- Pagination
+- Prefetching
+- Dev tools
+- Tooling - eslint
 
 ### Concepts:
 - Network load optimization
