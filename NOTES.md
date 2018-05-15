@@ -5,6 +5,8 @@
   - Fields
   - Aliases
   - Arguments
+  - Fragments
+  - @deprecate
 - Mutation
 - Subscription
 - Defer, live, stream, etc
