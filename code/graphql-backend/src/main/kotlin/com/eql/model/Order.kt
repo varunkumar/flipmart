@@ -29,6 +29,7 @@ data class Order(var customerId: String,
     var discounts: Double? = null
     var billingAddress: String? = null
     var email: String? = null
+    var mail: String? = null
     var comments: String? = null
     var tags: List<String>? = null
 }

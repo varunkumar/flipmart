@@ -64,4 +64,9 @@ object OrderDataFetcher {
         }
         total
     }
+
+    val fetchEmail = DataFetcher {
+        val order = it.getSource<Order>()
+        order.email
+    }
 }

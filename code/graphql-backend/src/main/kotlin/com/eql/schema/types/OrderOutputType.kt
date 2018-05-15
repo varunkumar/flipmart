@@ -20,6 +20,7 @@ val orderOutputType: GraphQLObjectType =
                 .field("shippingAddress" ..!GraphQLString description "The shippingAddress of the order")
                 .field("mobile" ..!GraphQLString description "The mobile of the order")
                 .field("email" ..GraphQLString description "The email of the order")
+                .field(("mail" ..GraphQLString description "The email of the order").deprecate("use email field instead").dataFetcher(OrderDataFetcher.fetchEmail))
                 .field("comments" ..GraphQLString description "The comments of the order")
                 .field("tags" ..listOfObjs(GraphQLString) description "The tags of the order")
                 .build()
