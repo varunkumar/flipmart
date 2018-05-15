@@ -48,7 +48,7 @@ object OrderDao {
         val orderKey = key.toString()
         order.id = orderKey
         order.products = ProductDao.getProducts(order.productIds).toList()
-        order.totalPrice = order.products!!.map { it.cost }.sum()
+        order.totalPrice = order.products!!.map { it.price!! }.sum()
         writeToFile(ORDERS_FILE, mapper.writeValueAsString(order))
         orderData[orderKey] = order
         key++

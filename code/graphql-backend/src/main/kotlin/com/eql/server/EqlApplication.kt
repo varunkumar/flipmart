@@ -30,7 +30,7 @@ object EqlApplication {
         // Test endpoint
         get("/hello") { "hello world" }
 
-        post("/eql") { request, response ->
+        post("/graphql") { request, response ->
             val payload = getPayload(request)
 
             payload?.let {

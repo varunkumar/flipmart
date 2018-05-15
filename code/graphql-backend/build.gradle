@@ -1,4 +1,4 @@
-group 'graphql-kotlin'
+group 'flipkart'
 version '1.0-SNAPSHOT'
 
 buildscript {

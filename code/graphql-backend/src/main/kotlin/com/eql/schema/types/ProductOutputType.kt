@@ -12,9 +12,9 @@ val productOutputType: GraphQLObjectType =
                 .field("name"
                         ..!GraphQLString description "The name of the product")
                 .field("stockQuantity"
-                        ..!GraphQLInt description "The stock quantity of the product")
-                .field("cost"
-                        ..!GraphQLFloat description "The cost of the product")
+                        ..GraphQLInt description "The stock quantity of the product")
+                .field("price"
+                        ..GraphQLFloat description "The price of the product")
                 .field("description"
                         ..GraphQLString description "The description of the product")
                 .field("tags"
@@ -28,10 +28,12 @@ val productOutputType: GraphQLObjectType =
                         ..dateTimeType description "The saleTo of the product")
                 .field("discontinued"
                         ..GraphQLBoolean description "is product discontinued")
-                .field("productCategory"
-                        ..productCategoryOutputType description "The product category")
+                .field("category"
+                        ..GraphQLString description "The product category")
                 .field("dimensions"
                         ..dimensionsOutputType description "The dimensions of the product")
                 .field("imageUrl"
                         ..GraphQLString description "The image URL of the product")
+                .field("gender"
+                        ..GraphQLString description "Gender of the product user group")
                 .build()

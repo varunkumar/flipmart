@@ -16,15 +16,32 @@ object ProductDataFetcher {
         ProductDao.getProducts(ids!!)
     }
 
+    val getProductById = DataFetcher {
+        val id: String = it.arguments["id"] as String
+        ProductDao.getProductById(id)
+    }
+
     val getAllProducts = DataFetcher {
         ProductDao.getAllProducts()
     }
 
-    val addProduct = DataFetcher {
+    val upsertProduct = DataFetcher {
         mapper.registerModule(JavaTimeModule())
         val inputString = mapper.writeValueAsString(it.arguments["product"])
         val product: Product = mapper.readValue(inputString, Product::class.java) as Product
-        ProductDao.addProduct(product)
+        ProductDao.upsertProduct(product)
+    }
+
+    val replaceProduct = DataFetcher {
+        mapper.registerModule(JavaTimeModule())
+        val inputString = mapper.writeValueAsString(it.arguments["product"])
+        val product: Product = mapper.readValue(inputString, Product::class.java) as Product
+        ProductDao.replaceProduct(product)
+    }
+
+    val removeProduct = DataFetcher {
+        val id: String = it.arguments["id"] as String
+        ProductDao.removeProduct(id)
     }
 
 }
