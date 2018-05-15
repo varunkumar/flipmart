@@ -1,6 +1,6 @@
 package com.eql.dao
 
-import com.eql.model.Product
+import com.eql.model.*
 import com.eql.util.PRODUCTS_FILE
 import com.eql.util.getObjectMapper
 import com.eql.util.merge
@@ -13,6 +13,7 @@ object ProductDao {
 
     private var key = 100
     private var productData = mutableMapOf<String, Product>()
+    private val categoryMap = hashMapOf(1 to CLOTHES, 2 to ACCESSORIES, 3 to ELECTRONICS)
     private val mapper = getObjectMapper()
 
     init {
@@ -32,18 +33,17 @@ object ProductDao {
         println(message = "Current products count: " + productData.count())
     }
 
-    fun getProducts(ids: List<String>): Collection<Product> {
-        return productData.filter { p -> ids.contains(p.key) }.values
+    fun fetchCategoryById(id: Int?): ProductCategory? {
+        return categoryMap[id]
     }
 
-    fun getProductById(id: String): Product? {
-        return productData[id]
+    // Search
+    fun searchProducts(name: String): Collection<String> {
+        // search in local cache
+        return productData.filter { p -> p.value.name!!.contains(name, true) }.values.map { p -> p.id!! }
     }
 
-    fun getAllProducts(): Collection<Product> {
-        return productData.values
-    }
-
+    // Upsert
     fun upsertProduct(product: Product): Product? {
         if (product.id == null) {
             product.id = key.toString()
@@ -60,6 +60,7 @@ object ProductDao {
         return productData[product.id!!]
     }
 
+    // Replace method
     fun replaceProduct(product: Product): Product? {
         if (product.id == null) {
             product.id = key.toString()
@@ -70,10 +71,24 @@ object ProductDao {
         return productData[product.id!!]
     }
 
+    // Remove method
     fun removeProduct(id: String): Product? {
         val product = productData[id]
         productData.remove(id)
         writeToFile(PRODUCTS_FILE, mapper.writeValueAsString(productData))
         return product
+    }
+
+    // Fetch methods
+    fun fetchProducts(ids: List<String>): Collection<Product> {
+        return productData.filter { p -> ids.contains(p.key) }.values
+    }
+
+    fun fetchProductById(id: String): Product? {
+        return productData[id]
+    }
+
+    fun fetchAllProducts(): Collection<Product> {
+        return productData.values
     }
 }

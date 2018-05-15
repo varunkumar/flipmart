@@ -1,6 +1,7 @@
 package com.eql.schema.types
 
 import com.beyondeye.graphkool.*
+import com.eql.datafetcher.ProductDataFetcher
 import graphql.Scalars.*
 import graphql.schema.GraphQLObjectType
 
@@ -28,8 +29,8 @@ val productOutputType: GraphQLObjectType =
                         ..dateTimeType description "The saleTo of the product")
                 .field("discontinued"
                         ..GraphQLBoolean description "is product discontinued")
-                .field("category"
-                        ..GraphQLString description "The product category")
+                .field(("category"
+                        .. productCategoryOutputType description "The product category").dataFetcher(ProductDataFetcher.getCategoryById))
                 .field("dimensions"
                         ..dimensionsOutputType description "The dimensions of the product")
                 .field("imageUrl"

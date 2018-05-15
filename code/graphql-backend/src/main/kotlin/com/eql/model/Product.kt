@@ -9,7 +9,7 @@ data class Product(var id: String?, var name: String?, var stockQuantity: Int?, 
     var saleFrom: Instant? = null
     var saleTo: Instant? = null
     var discontinued: Boolean? = null
-    var category: String? = null
+    var categoryId: Int? = null
     var dimensions: Dimensions? = null
     var imageUrl: String? = null
     var gender: String? = null

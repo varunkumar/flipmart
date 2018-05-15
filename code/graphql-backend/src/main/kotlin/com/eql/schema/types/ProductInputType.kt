@@ -2,8 +2,7 @@ package com.eql.schema.types
 
 import com.beyondeye.graphkool.listOfObjs
 import graphql.Scalars
-import graphql.Scalars.GraphQLFloat
-import graphql.Scalars.GraphQLString
+import graphql.Scalars.*
 import graphql.schema.GraphQLInputObjectField
 import graphql.schema.GraphQLInputObjectType
 
@@ -51,8 +50,8 @@ val productInputType: GraphQLInputObjectType =
                         .type(Scalars.GraphQLBoolean)
                         .description("is product discontinued"))
                 .field(GraphQLInputObjectField.newInputObjectField()
-                        .name("category")
-                        .type(GraphQLString)
+                        .name("categoryId")
+                        .type(GraphQLInt)
                         .description("The product category"))
                 .field(GraphQLInputObjectField.newInputObjectField()
                         .name("dimensions")

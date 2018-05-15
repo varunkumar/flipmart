@@ -1,6 +1,7 @@
 package com.eql.datafetcher
 
 import com.eql.dao.ProductDao
+import com.eql.model.CLOTHES
 import com.eql.model.Product
 import com.eql.util.getObjectMapper
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
@@ -10,19 +11,24 @@ object ProductDataFetcher {
 
     private val mapper = getObjectMapper()
 
+    val searchProducts = DataFetcher {
+        val name: String = it.arguments["name"] as String
+        ProductDao.searchProducts(name)
+    }
+
     @Suppress("UNCHECKED_CAST")
-    val getProducts = DataFetcher {
+    val fetchProducts = DataFetcher {
         val ids: List<String>? = it.arguments["ids"] as List<String>?
-        ProductDao.getProducts(ids!!)
+        ProductDao.fetchProducts(ids!!)
     }
 
-    val getProductById = DataFetcher {
+    val fetchProductById = DataFetcher {
         val id: String = it.arguments["id"] as String
-        ProductDao.getProductById(id)
+        ProductDao.fetchProductById(id)
     }
 
-    val getAllProducts = DataFetcher {
-        ProductDao.getAllProducts()
+    val fetchAllProducts = DataFetcher {
+        ProductDao.fetchAllProducts()
     }
 
     val upsertProduct = DataFetcher {
@@ -44,4 +50,8 @@ object ProductDataFetcher {
         ProductDao.removeProduct(id)
     }
 
+    val getCategoryById = DataFetcher {
+        val product = it.getSource<Product>()
+        ProductDao.fetchCategoryById(product.categoryId)
+    }
 }

@@ -7,6 +7,7 @@ import com.eql.schema.types.orderInputType
 import com.eql.schema.types.orderOutputType
 import com.eql.schema.types.productInputType
 import com.eql.schema.types.productOutputType
+import graphql.Scalars.GraphQLInt
 import graphql.Scalars.GraphQLString
 import graphql.schema.GraphQLFieldDefinition
 import graphql.schema.GraphQLObjectType
@@ -20,16 +21,21 @@ object EqlSchema {
                             .name("products")
                             .type(listOfObjs(productOutputType))
                             .argument(newa = +"ids"..!listOfObjs(GraphQLString) description "ids of the products.")
-                            .dataFetcher(ProductDataFetcher.getProducts))
+                            .dataFetcher(ProductDataFetcher.fetchProducts))
                     .field(GraphQLFieldDefinition.Builder()
                             .name("product")
                             .type(productOutputType)
                             .argument(newa = +"id"..!GraphQLString description "id of the product.")
-                            .dataFetcher(ProductDataFetcher.getProductById))
+                            .dataFetcher(ProductDataFetcher.fetchProductById))
                     .field(GraphQLFieldDefinition.Builder()
                             .name("allProducts")
                             .type(listOfObjs(productOutputType))
-                            .dataFetcher(ProductDataFetcher.getAllProducts))
+                            .dataFetcher(ProductDataFetcher.fetchAllProducts))
+                    .field(GraphQLFieldDefinition.Builder()
+                            .name("searchProducts")
+                            .type(listOfObjs(GraphQLInt))
+                            .argument(newa = +"name"..GraphQLString description "name of the product.")
+                            .dataFetcher(ProductDataFetcher.searchProducts))
                     .field(GraphQLFieldDefinition.Builder()
                             .name("orders")
                             .type(listOfObjs(orderOutputType))
