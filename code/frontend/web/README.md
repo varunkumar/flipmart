@@ -1,4 +1,4 @@
-# Flip Mart Web
+# FlipMart Web
 
 ### How to run project?
 ```bash
