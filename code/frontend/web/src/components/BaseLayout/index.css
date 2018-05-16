@@ -1,0 +1,38 @@
+.content {
+  background-color: #F9F6F6;
+}
+
+.accessory {
+  background: url('/images/fashion2.jpg');
+}
+
+.women {
+  background: url('/images/fashion3.jpg');
+}
+
+.women1 {
+  background: url('/images/fashion5.jpg');
+}
+
+.men {
+  background: url('/images/pexels-photo-277320.jpeg');
+}
+
+.drone {
+  background: url('/images/pexels-photo-724921.jpeg');
+}
+
+.gadget {
+  background: url('/images/pexels-photo-583842.jpeg');
+}
+
+.camera {
+  background: url('/images/pexels-photo-217842.jpeg');
+}
+
+.accessory, .women, .women1, .men, .drone, .gadget, .camera {
+  display: flex;
+  flex-direction: column;
+  background-size: cover;
+  background-position: center;
+}
