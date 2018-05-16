@@ -8,22 +8,35 @@ import ProductDetail from './components/ProductDetail';
 import ProductList from './components/ProductList';
 import './index.css';
 import registerServiceWorker from './registerServiceWorker';
+import ApolloClient from "apollo-boost";
+import { ApolloProvider } from "react-apollo";
+import { defaults, resolvers } from "./state/resolvers";
+
+const client = new ApolloClient({
+  uri: "/graphql",
+  clientState: {
+    defaults,
+    resolvers
+  }
+});
 
 ReactDOM.render(
-  <BrowserRouter>
-    <BaseLayout>
-      <Switch>
-        <Route exact path="/" component={App} />
-        <Route path="/cart" component={Cart} />
-        <Route path="/women" render={() => <ProductList gender="women" />} />
-        <Route path="/men" render={() => <ProductList gender="men" />} />
-        <Route path="/clothes" render={() => <ProductList category="clothes" />} />
-        <Route path="/accessories" render={() => <ProductList category="accessories" />} />
-        <Route path="/electronics" render={() => <ProductList category="electronics" />} />
-        <Route exact path="/products/:id" component={ProductDetail} />
-      </Switch>
-    </BaseLayout>
-  </BrowserRouter>
+  <ApolloProvider client={client}>
+    <BrowserRouter>
+      <BaseLayout>
+        <Switch>
+          <Route exact path="/" component={App} />
+          <Route path="/cart" component={Cart} />
+          <Route path="/women" render={() => <ProductList gender="women" />} />
+          <Route path="/men" render={() => <ProductList gender="men" />} />
+          <Route path="/clothes" render={() => <ProductList category="clothes" />} />
+          <Route path="/accessories" render={() => <ProductList category="accessories" />} />
+          <Route path="/electronics" render={() => <ProductList category="electronics" />} />
+          <Route exact path="/products/:id" component={ProductDetail} />
+        </Switch>
+      </BaseLayout>
+    </BrowserRouter>
+  </ApolloProvider>
 
   , document.getElementById('root'));
 registerServiceWorker();

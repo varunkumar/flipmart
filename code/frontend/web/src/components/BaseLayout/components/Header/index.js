@@ -6,7 +6,7 @@ import './index.css';
 
 const Header = () => (
   <div className="header">
-    <h1 id="header-title">Flip Mart</h1>
+    <h1 id="header-title">FlipMart</h1>
     <div className="links-header">
       <p><NavLink activeClassName="selected" className="nav-link-header" to="/women">Women</NavLink></p>
       <p><NavLink activeClassName="selected" className="nav-link-header" to="/men">Men</NavLink></p>
