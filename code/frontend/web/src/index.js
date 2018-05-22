@@ -7,6 +7,7 @@ import Cart from './components/Cart';
 import ProductDetail from './components/ProductDetail';
 import ProductList from './components/ProductList';
 import OrderList from './components/OrderList';
+import Admin from './components/Admin';
 import './index.css';
 import registerServiceWorker from './registerServiceWorker';
 import ApolloClient from "apollo-boost";
@@ -35,6 +36,7 @@ ReactDOM.render(
           <Route path="/electronics" render={() => <ProductList category="electronics" />} />
           <Route exact path="/products/:id" component={ProductDetail} />
           <Route path="/orders" component={OrderList} />
+          <Route path="/admin" component={Admin} />
         </Switch>
       </BaseLayout>
     </BrowserRouter>
