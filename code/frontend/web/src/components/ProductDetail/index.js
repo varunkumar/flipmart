@@ -3,11 +3,12 @@ import React, { Component } from 'react';
 import { Icon } from 'react-materialize';
 import { Link } from 'react-router-dom';
 import PRODUCTS from '../Data';
-import { Query } from 'react-apollo';
+import { Query, Mutation } from 'react-apollo';
 import { gql } from 'apollo-boost';
 import './index.css';
+import { ADD_TO_CART } from '../ProductList/AllProducts';
 
-const FETCH_PRODUCT_BY_ID = gql`
+export const FETCH_PRODUCT_BY_ID = gql`
   query fetchProductById($id: String) {
     product(id: $id) {
       id
@@ -48,7 +49,11 @@ class ProductDetail extends Component {
                 <div className="product-bio">
                   <p id="product-description">{currentProduct.description}</p>
                   <p id="product-price">${currentProduct.price}</p>
-                  <Icon small id="add-icon">add_shopping_cart</Icon>
+                  <Mutation mutation={ADD_TO_CART} variables={{ id: currentProduct.id }}>
+                    {addToCart => (
+                      !currentProduct.inCart && <div onClick={addToCart}><Icon small id="add-icon">add_shopping_cart</Icon></div>
+                    )}
+                  </Mutation>
                 </div>
                 <div className="product-review">
                   <div className="stars">
@@ -81,8 +86,8 @@ class ProductDetail extends Component {
                           </div>
                         </Link>
                         <div className="price-add">
-                          <h5 id="product-price">${product.price}</h5>
-                          <Icon small id="add-icon">add_shopping_cart</Icon>
+                          <h5 id="product-price">₹{product.price}</h5>
+                          {!product.inCart && <Icon small id="add-icon">add_shopping_cart</Icon>}
                         </div>
                       </div>
                     </Link>

@@ -29,3 +29,23 @@
   color: black;
   transition: 0.5s;
 }
+
+.cart-items-count {
+  border-radius: 5px;
+  background:red;
+  font-size: 12px;
+  margin: 0px;
+  padding: 0px;
+  margin-top: -10px;
+  color: white;
+  padding-left: 5px;
+  padding-right: 5px;
+  font-size: 10px;
+  position: absolute;
+  right: 24px;
+  top: 13px;
+}
+
+.cart-items-count:hover {
+  background: #A00;
+}

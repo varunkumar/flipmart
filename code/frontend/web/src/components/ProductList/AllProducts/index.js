@@ -1,7 +1,7 @@
 import React from 'react';
 import { Icon } from 'react-materialize';
 import { Link } from 'react-router-dom';
-import { Query } from 'react-apollo';
+import { Query, Mutation } from 'react-apollo';
 import { gql } from 'apollo-boost';
 
 export const FETCH_ALL_PRODUCTS = gql`
@@ -17,13 +17,20 @@ export const FETCH_ALL_PRODUCTS = gql`
       gender
       price
       imageUrl
+      inCart @client
     }
+  }
+`;
+
+export const ADD_TO_CART = gql`
+  mutation addToCart($id: String) {
+    addToCart(id: $id) @client
   }
 `;
 
 const AllProducts = (props) => (
   <div className="items">
-    <Query query={FETCH_ALL_PRODUCTS}>
+    <Query query={FETCH_ALL_PRODUCTS} >
       {({ loading, error, data, client }) => {
         if (loading) return 'Loading...';
         if (error) return error.toString();
@@ -40,10 +47,14 @@ const AllProducts = (props) => (
                     <h4 id="product-description">{product.description}</h4>
                   </div>
                 </Link>
-                <div className="price-add">
-                  <h5 id="product-price">₹{product.price}</h5>
-                  <Icon small id="add-icon">add_shopping_cart</Icon>
-                </div>
+                <Mutation mutation={ADD_TO_CART} variables={{ id: product.id }}>
+                  {addToCart => (
+                    <div className="price-add">
+                      <h5 id="product-price">₹{product.price}</h5>
+                      {!product.inCart && <div onClick={addToCart}><Icon small id="add-icon">add_shopping_cart</Icon></div>}
+                    </div>
+                  )}
+                </Mutation>
               </div>;
             }
           }
