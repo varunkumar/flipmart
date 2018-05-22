@@ -14,6 +14,7 @@ const Navbar = () => (
           <li><NavLink activeClassName="selected" className="nav-link" to="/electronics">Electronics</NavLink></li>
         </ul>
       </div>
+      <NavLink to="/orders" style={{ marginRight: '20px' }}>Orders</NavLink>
       <div className="shopping-cart">
         <NavLink to="/cart">
           <Icon medium>shopping_cart</Icon>

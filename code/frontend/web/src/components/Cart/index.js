@@ -32,8 +32,24 @@ export const COMPUTE_TOTAL = gql`
   }
 `
 
+const PLACE_ORDER = gql`
+  mutation addOrder($order: orderInput) {
+    upsertOrder(order: $order) {
+      id
+      customerId
+      orderStatus
+      shippingStatus
+    }
+  }
+`;
+
 class CartProducts extends Component {
   computeTotal = (products = []) => products.reduce((total, product) => total + (product.price || 0), 0)
+
+  placeOrder = (mutationFn) => {
+    mutationFn();
+    window.location.href = '/orders';
+  }
 
   renderProduct = (item) => {
     return <div key={item.id} className="item">
@@ -60,6 +76,14 @@ class CartProducts extends Component {
     </div>
   }
 
+  renderPlaceOrder(order) {
+    return <Mutation mutation={PLACE_ORDER} variables={{ order: order }} refetchQueries={["allOrders"]}>
+      {mutation => (
+        <button onClick={mutation}>Place Order</button>
+      )}
+    </Mutation>;
+  }
+
   render() {
     return (
       <div>
@@ -68,10 +92,20 @@ class CartProducts extends Component {
           {
             // Example for computed property & fetch policies
             <Query query={COMPUTE_TOTAL} displayName="Total" fetchPolicy="network-only" errorPolicy="ignore">
-              {({ loading: computedTotalLoading, data: computedTotalData = {} }) => {
+              {({ loading: computedTotalLoading, data: computedTotalData = {}, client }) => {
                 if (computedTotalLoading) return 'Loading...';
 
-                return (<div>Total: ₹{computedTotalData.computeTotal || 0}</div>);
+                return (
+                  <Fragment>
+                    <div>Total: ₹{computedTotalData.computeTotal || 0}</div>
+                    {computedTotalData.computeTotal ? (
+                      this.renderPlaceOrder({
+                        customerId: 'Varun',
+                        productIds: client.readQuery({ query: FETCH_PRODUCTS_IN_CART }).productsInCart.map(product => product.id)
+                      })
+                    ) : undefined}
+                  </Fragment>
+                );
               }}
             </Query>
           }
