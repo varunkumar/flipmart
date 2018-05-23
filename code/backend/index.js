@@ -8,8 +8,8 @@ const launcher = new ApolloEngineLauncher({
     http: {
       // The URL that the Proxy should use to connect to your
       // GraphQL server.
-      url: 'http://localhost:4567/graphql',
-    },
+      url: 'http://localhost:4567/graphql'
+    }
   }],
   // Tell the Proxy on what port to listen, and which paths should
   // be treated as GraphQL instead of transparently proxied as raw HTTP.
@@ -19,7 +19,7 @@ const launcher = new ApolloEngineLauncher({
   frontends: [{
     port: 4000,
     endpoints: ['/graphql'],
-  }],
+  }]
 });
 
 // Start the Proxy; crash on errors.

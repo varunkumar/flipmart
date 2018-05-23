@@ -1,6 +1,4 @@
-//Dependencies
 import React, { Component } from 'react';
-//Internals
 import AllProducts from './AllProducts';
 import './index.css';
 

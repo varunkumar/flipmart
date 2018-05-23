@@ -7,7 +7,7 @@
 
 ### How to start Apollo Engine Proxy?
 ```bash
-ENGINE_API_KEY="<<API_KEY>>" node index.js
+ENGINE_API_KEY="<<API_KEY>>" npm start
 ```
 
 ### How to verify server?
@@ -19,14 +19,14 @@ Above should return `hello world` as a response
 ### How to query for a product?
 Simple way is to use GraphiQL
 ```html
-http://localhost:4567/
+http://localhost:4000/
 ```
 
 Use port 3000 when Apollo Engine proxy is used.
 
 Through a post request:
 ```
-URL: http://localhost:4567/eql
+URL: http://localhost:4000/graphql
 Header: Content-Type: application/json
 Body: {"query":"{products(ids:\"100\") {id,name,cost,tags}}"}
 ```
@@ -36,9 +36,8 @@ Body: {"query":"{products(ids:\"100\") {id,name,cost,tags}}"}
 query {
   allProducts {
     name
-    stockQuantity
-    saleFrom
-    saleTo
+    id
+    price
   }
 }
 
@@ -46,7 +45,11 @@ query {
 query {
   allOrders {
     id
-    customerId  
+    customerId 
+    products {
+      id
+      name
+    }
   }
 }
 
@@ -55,19 +58,18 @@ query {
   products(ids: "100") {
     id
     name
-    cost
-    tags
-    stockQuantity
-    saleFrom
-    description
   }
 }
 
 
 query {
-  orders (customerId:"mehtasan") {
+  orders (customerId: "Varun") {
     id,
-    totalPrice
+    products {
+      id
+      name
+      price
+    }
   }
 }
 ```
@@ -77,25 +79,23 @@ query {
 mutation {
   addProduct (product: {
     name:"LG AC",
-    cost: 38000.99,
-    saleTo: "2019-01-01T12:12:12.000Z",
-    stockQuantity: 12
+    price: 38000.99,
+    categoryId: 3
   }) {
     name
-    saleTo
+    price
+    category {
+      id
+      name
+    }
   }
 }
 
 
 mutation {
   addOrder(order: {
-    customerId: "mehtasan",
-    orderStatus: CREATED,
-    shippingStatus: WORKING,
-    productIds: ["100", "101"],
-    totalPrice: 26000,
-    shippingAddress: "Arc",
-    mobile: "9988998899"
+    customerId: "Varun",
+    productIds: ["100", "101"]
   }) {
     customerId
     orderStatus

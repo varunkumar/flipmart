@@ -5,7 +5,7 @@ import './index.css';
 
 const Footer = () => (
   <div className="footer">
-    <p>2018 Flip Mart</p>
+    <p>2018 FlipMart</p>
   </div>
 )
 
