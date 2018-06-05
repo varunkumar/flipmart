@@ -1,16 +1,17 @@
-import React, { Fragment } from 'react';
-import { Image, Text } from 'react-native';
+import React from 'react';
+import { Text } from 'react-native';
+import { HEADER_TEXT_COLOR } from '../../styles';
 
 export default class LogoTitle extends React.Component {
   render() {
     return (
-      <Fragment>
-        <Image
-          source={require('../../../public/logo.png')}
-          style={{ width: 30, height: 30 }}
-        />
-        <Text>FlipMart</Text>
-      </Fragment>
+      <Text
+        onPress={() => this.props.navigation.navigate('splash')}
+        color={HEADER_TEXT_COLOR}
+        style={{ fontSize: 20, paddingLeft: 10 }}
+      >
+        FlipMart
+      </Text>
     );
   }
 }

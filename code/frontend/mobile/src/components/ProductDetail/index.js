@@ -26,7 +26,7 @@ export default class ProductDetail extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#AAA',
     alignItems: 'center',
     justifyContent: 'center',
   },

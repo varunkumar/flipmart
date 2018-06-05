@@ -1,18 +1,11 @@
-import React, { Fragment } from 'react';
-import { Button, Text } from 'react-native';
+import React from 'react';
+import { Image, View } from 'react-native';
+import { MaterialIcons } from '@expo/vector-icons';
 
 export default class CartCount extends React.Component {
   render() {
     return (
-      <Fragment>
-        <Button
-          onPress={() => alert('This is a button!')}
-          title="Cart"
-          color="#fff"
-        >
-          <Text>===</Text>
-        </Button>
-      </Fragment>
+      <MaterialIcons name="shopping-cart" size={25} />
     );
   }
 }
