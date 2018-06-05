@@ -1,0 +1,39 @@
+{
+  "name": "flipmart",
+  "version": "1.0.0",
+  "private": true,
+  "main": "./src/entry.js",
+  "devDependencies": {
+    "babel-eslint": "^8.2.3",
+    "eslint": "^4.19.1",
+    "eslint-config-react-app": "^2.1.0",
+    "eslint-plugin-flowtype": "^2.47.1",
+    "eslint-plugin-import": "^2.12.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.8.2",
+    "eslint-plugin-react-native": "^3.2.1",
+    "jest-expo": "^27.0.1",
+    "react-native-scripts": "1.14.0",
+    "react-test-renderer": "^16.4.0"
+  },
+  "scripts": {
+    "start": "react-native-scripts start",
+    "eject": "react-native-scripts eject",
+    "android": "react-native-scripts android",
+    "ios": "react-native-scripts ios",
+    "test": "jest"
+  },
+  "jest": {
+    "preset": "jest-expo"
+  },
+  "dependencies": {
+    "apollo-boost": "^0.1.7",
+    "expo": "^27.0.2",
+    "graphql": "^0.13.2",
+    "react": "^16.4.0",
+    "react-apollo": "^2.1.4",
+    "react-native": "^0.55.4",
+    "react-native-snap-carousel": "^3.7.0",
+    "react-navigation": "^2.0.4"
+  }
+}
