@@ -7,7 +7,7 @@ import graphql.Scalars.GraphQLString
 import graphql.schema.GraphQLObjectType
 
 val orderOutputType: GraphQLObjectType =
-        newObject("order")
+        newObject("Order")
                 .description("Order output type")
                 .field("id" ..!GraphQLString description "The id of the order")
                 .field("customerId" ..!GraphQLString description "The customerId of the order")

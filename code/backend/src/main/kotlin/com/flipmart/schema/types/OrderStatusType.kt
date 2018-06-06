@@ -3,7 +3,7 @@ package com.flipmart.schema.types
 import com.beyondeye.graphkool.newEnum
 import graphql.schema.GraphQLEnumType
 
-val orderStatusType: GraphQLEnumType = newEnum("orderStatus")
+val orderStatusType: GraphQLEnumType = newEnum("OrderStatus")
         .description("Status of the order")
         .value("CREATED", "CREATED", "order created")
         .value("PLACED", "PLACED", "order placed")
