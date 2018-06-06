@@ -1,0 +1,12 @@
+query allOrders {
+    allOrders {
+      id
+      customerId
+      orderStatus
+      products {
+        id
+        name
+        price
+      }
+    }
+  }
