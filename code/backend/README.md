@@ -1,5 +1,7 @@
 # FlipMart Backend
 
+Backend server powered by GraphQL
+
 ### How to run project?
 
 ```bash
