@@ -1,30 +1,37 @@
 # FlipMart Backend
 
 ### How to run project?
+
 ```bash
 ./gradlew clean build run
 ```
 
 ### How to start Apollo Engine Proxy?
+
 ```bash
 ENGINE_API_KEY="<<API_KEY>>" npm start
 ```
 
 ### How to verify server?
+
 ```html
 http://localhost:4567/hello
 ```
+
 Above should return `hello world` as a response
 
 ### How to query for a product?
+
 Simple way is to use GraphiQL
+
 ```html
 http://localhost:4000/
 ```
 
-Use port 3000 when Apollo Engine proxy is used.
+Use port 4000 when Apollo Engine proxy is used.
 
 Through a post request:
+
 ```
 URL: http://localhost:4000/graphql
 Header: Content-Type: application/json
@@ -32,6 +39,7 @@ Body: {"query":"{products(ids:\"100\") {id,name,cost,tags}}"}
 ```
 
 ### Sample Queries
+
 ```graphql
 query {
   allProducts {
@@ -41,18 +49,16 @@ query {
   }
 }
 
-
 query {
   allOrders {
     id
-    customerId 
+    customerId
     products {
       id
       name
     }
   }
 }
-
 
 query {
   products(ids: "100") {
@@ -61,10 +67,9 @@ query {
   }
 }
 
-
 query {
-  orders (customerId: "Varun") {
-    id,
+  orders(customerId: "Varun") {
+    id
     products {
       id
       name
@@ -75,13 +80,10 @@ query {
 ```
 
 ### Sample Mutations
+
 ```graphql
 mutation {
-  addProduct (product: {
-    name:"LG AC",
-    price: 38000.99,
-    categoryId: 3
-  }) {
+  addProduct(product: { name: "LG AC", price: 38000.99, categoryId: 3 }) {
     name
     price
     category {
@@ -91,12 +93,8 @@ mutation {
   }
 }
 
-
 mutation {
-  addOrder(order: {
-    customerId: "Varun",
-    productIds: ["100", "101"]
-  }) {
+  addOrder(order: { customerId: "Varun", productIds: ["100", "101"] }) {
     customerId
     orderStatus
   }
