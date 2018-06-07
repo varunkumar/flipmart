@@ -1,9 +1,9 @@
 // Import React
-import React from "react";
-import { Query } from "react-apollo";
-import { gql } from "apollo-boost";
+import React from 'react';
+
 // Import Spectacle Core tags
 import {
+  Appear,
   BlockQuote,
   Cite,
   ComponentPlayground,
@@ -13,88 +13,54 @@ import {
   ListItem,
   Quote,
   Slide,
-  Text
-} from "spectacle";
+  Text,
+  Image,
+  Layout,
+  Fit,
+  Table,
+  TableBody,
+  TableHeader,
+  TableHeaderItem,
+  TableRow,
+  TableItem
+} from 'spectacle';
+
 // Import theme
-import createTheme from "spectacle/lib/themes/default";
+import createTheme from 'spectacle/lib/themes/default';
 
-// import order from "raw-loader!./snippets/orderlist.example"; // eslint-disable-line
+// Import apollo stuff for live demo
+import { Query } from 'react-apollo';
+import { gql } from 'apollo-boost';
+
+// Import snippets
+import { ORDER } from './snippets';
+
 // Require CSS
-require("normalize.css");
-
-const order = `
-const FETCH_ALL_ORDERS = gql\`
-  query allOrders {
-    allOrders {
-      id
-      customerId
-      orderStatus
-      products {
-        id
-        name
-        price
-      }
-    }
-  }
-\`;
-
-class OrderList extends React.Component {
-  render() {
-    return (
-      <div className="items-wrapper">
-        <div className="items-title">
-          <h4>My Orders</h4>
-        </div>
-        <div className="items">
-
-          <Query query={FETCH_ALL_ORDERS} >
-            {({ loading, error, data, client }) => {
-              if (loading) return 'Loading...';
-              if (error) return error.toString();
-              return data.allOrders.map((order) => {
-                return <div className="order" key={order.id}>
-                  <div style={{ fontWeight: 'bold' }}><a href="">Order: {order.id}</a>  <i>{order.orderStatus}</i></div>
-                  <ul>
-                    {order.products.map((product) => {
-                      return <li key={product.id}>{product.name}<div className="order-product-price">₹{product.price}</div></li>;
-                    })}
-                  </ul>
-                </div>
-              })
-            }}
-          </Query>
-        </div>
-      </div>
-    );
-  }
-}
-
-render(<OrderList />);
-`;
+require('normalize.css');
 
 const darkTheme = createTheme(
   {
-    primary: "#042B35",
-    secondary: "#D2A03E",
-    tertiary: "#FD853D",
-    quartenary: "#A7A7A7"
+    primary: '#042B35',
+    secondary: '#D2A03E',
+    tertiary: '#FD853D',
+    quartenary: '#A7A7A7'
   },
   {
-    primary: "Montserrat",
-    secondary: "Helvetica"
+    primary: 'Montserrat',
+    secondary: 'Helvetica'
   }
 );
 
 const lightTheme = createTheme(
   {
-    primary: "#FDF6E3",
-    secondary: "#D2A03E",
-    tertiary: "#FD853D",
-    quartenary: "#657B83"
+    primary: '#FDF6E3',
+    secondary: '#D2A03E',
+    tertiary: '#FD853D',
+    quartenary: '#657B83'
   },
   {
-    primary: "Montserrat",
-    secondary: "Helvetica"
+    primary: 'Montserrat',
+    secondary: 'Helvetica'
   }
 );
 
@@ -102,57 +68,105 @@ export default class Presentation extends React.Component {
   render() {
     return (
       <Deck
-        transition={["zoom", "slide"]}
+        transition={['zoom', 'slide']}
         transitionDuration={500}
         theme={darkTheme}
         contentHeight={1000}
       >
-        <Slide transition={["zoom"]} bgColor="primary">
-          <Heading size={1} fit caps lineHeight={1} textColor="secondary">
-            Data exchange technology - GraphQL
+        <Slide transition={['zoom', 'slide', 'fade', 'spin']} bgColor="primary">
+          <Heading size={1} fit caps textColor="secondary">
+            Data exchange technology
           </Heading>
-          <Text margin="10px 0 0" textColor="tertiary" size={1} fit bold>
-            - Sanket, Varun
-          </Text>
-        </Slide>
-        <Slide transition={["fade"]} bgColor="primary" textColor="tertiary">
-          <Heading size={6} textColor="secondary" caps>
-            Structure
-          </Heading>
-          <List>
-            <ListItem>Intro</ListItem>
-            <ListItem>Core concepts</ListItem>
-            <ListItem>GraphQL client</ListItem>
-            <ListItem>GraphQL ecosystem</ListItem>
-            <ListItem>GraphQL @ Arcesium</ListItem>
-            <ListItem>Our verdict</ListItem>
-          </List>
-        </Slide>
-        <Slide transition={["fade"]} bgColor="primary" textColor="tertiary">
-          <Heading size={6} textColor="secondary" caps>
-            Introduction
-          </Heading>
-          {
-            // TODO: add logo
-          }
-        </Slide>
-        <Slide transition={["fade"]} bgColor="primary" textColor="tertiary">
-          <Heading size={6} textColor="secondary" caps>
+          <Heading size={3} caps textColor="tertiary">
             GraphQL
           </Heading>
-          {
-            // TODO: add does it work image
-          }
+          <Text margin="100px 0 0" textColor="quartenary" size={6}>
+            Sanket, Varun
+          </Text>
         </Slide>
-        <Slide transition={["fade"]} bgColor="primary" textColor="tertiary">
-          <Heading size={6} textColor="secondary" caps>
-            Exploration Scope - FlipMart
+        <Slide
+          transition={['zoom', 'fade']}
+          bgColor="primary"
+          textColor="tertiary"
+        >
+          <Heading size={3} textColor="secondary" caps>
+            Contents
           </Heading>
-          {
-            // TODO: add demo images
-          }
+          <List>
+            <Appear>
+              <ListItem>What? How?</ListItem>
+            </Appear>
+            <Appear>
+              <ListItem>Core concepts</ListItem>
+            </Appear>
+            <Appear>
+              <ListItem>GraphQL client</ListItem>
+            </Appear>
+            <Appear>
+              <ListItem>GraphQL ecosystem</ListItem>
+            </Appear>
+            <Appear>
+              <ListItem>GraphQL @ Arcesium</ListItem>
+            </Appear>
+            <Appear>
+              <ListItem>Our verdict</ListItem>
+            </Appear>
+          </List>
         </Slide>
-        <Slide transition={["fade"]} bgColor="primary" textColor="tertiary">
+        <Slide
+          transition={['zoom', 'slide', 'fade', 'spin']}
+          bgColor="primary"
+          textColor="primary"
+        >
+          <Heading size={3} textColor="secondary" caps>
+            Introduction
+          </Heading>
+          <Text size={6} textColor="tertiary" style={{ marginBottom: 40 }}>
+            API-first design model
+          </Text>
+          <Image src="/images/graphql.png" height={300} width={300} />
+        </Slide>
+        <Slide
+          transition={['fade', 'zoom']}
+          bgColor="primary"
+          textColor="tertiary"
+        >
+          <Heading size={1} textColor="secondary" caps>
+            GraphQL
+          </Heading>
+          <Text size={6} textColor="tertiary" style={{ marginBottom: 40 }}>
+            A query language for API, a runtime for fulfilling queries
+          </Text>
+          <Image src="/images/graphql-how.png" width={1000} />
+        </Slide>
+        <Slide
+          transition={['zoom', 'fade', 'spin', 'slide']}
+          bgColor="primary"
+          textColor="tertiary"
+        >
+          <Heading size={6} textColor="tertiary" caps>
+            Exploration Scope
+          </Heading>
+          <Image src="/images/web.png" />
+        </Slide>
+        <Slide
+          transition={['zoom', 'fade']}
+          bgColor="primary"
+          textColor="tertiary"
+        >
+          <Heading size={6} textColor="tertiary" caps>
+            Exploration Scope
+          </Heading>
+          <Layout>
+            <Image src="/images/ios.png" />
+            <Image src="/images/android.png" width={428} height={713} />
+          </Layout>
+        </Slide>
+        <Slide
+          transition={['zoom', 'fade', 'spin', 'slide']}
+          bgColor="primary"
+          textColor="tertiary"
+        >
           <Heading size={6} textColor="secondary" caps>
             Exploration Scope - Reporting infra
           </Heading>
@@ -160,109 +174,61 @@ export default class Presentation extends React.Component {
             // TODO: add demo images
           }
         </Slide>
-        <Slide transition={["fade"]} bgColor="primary" textColor="tertiary">
+        <Slide
+          transition={['zoom', 'fade']}
+          bgColor="primary"
+          textColor="tertiary"
+        >
           <Heading size={6} textColor="secondary" caps>
             Core concepts
           </Heading>
           <List>
-            <ListItem>SDL</ListItem>
-            <ListItem>Query</ListItem>
-            <ListItem>Mutation</ListItem>
-            <ListItem>Subscription</ListItem>
-            <ListItem>Resolver functions</ListItem>
-            <ListItem>Introspection queries</ListItem>
+            <Appear>
+              <ListItem>SDL</ListItem>
+            </Appear>
+            <Appear>
+              <ListItem>Query</ListItem>
+            </Appear>
+            <Appear>
+              <ListItem>Mutation</ListItem>
+            </Appear>
+            <Appear>
+              <ListItem>Subscription</ListItem>
+            </Appear>
+            <Appear>
+              <ListItem>Resolver functions</ListItem>
+            </Appear>
+            <Appear>
+              <ListItem>Introspection queries</ListItem>
+            </Appear>
           </List>
           {
             // TODO: add SDL image
           }
         </Slide>
-        <Slide transition={["fade"]} bgColor="primary" textColor="tertiary">
+        <Slide
+          transition={['zoom', 'fade', 'spin', 'slide']}
+          bgColor="primary"
+          textColor="tertiary"
+        >
+          <Heading size={6} textColor="secondary" caps>
+            Core Concepts
+          </Heading>
+          <Image src="/images/graphql-works.png" width={1000} />
+        </Slide>
+        <Slide
+          transition={['zoom', 'fade', 'spin', 'slide']}
+          bgColor="primary"
+          textColor="tertiary"
+        >
           <Heading size={6} textColor="secondary" caps>
             GraphQL client
           </Heading>
-          <List>
-            <ListItem>Declarative data fetching</ListItem>
-            <ListItem>Local and remote data management</ListItem>
-          </List>
-          {
-            // TODO: embed codepane, add redux comparison chart
-          }
-        </Slide>
-        <Slide transition={["fade"]} bgColor="primary" textColor="tertiary">
-          <Heading size={6} textColor="secondary" caps>
-            GraphQL ecosystem
-          </Heading>
-          <List>
-            <ListItem>Batching, caching, pagination</ListItem>
-            <ListItem>Automated persisted queries</ListItem>
-            <ListItem>Monitoring and tracing</ListItem>
-            <ListItem>Static type checking and linting</ListItem>
-            <ListItem>Schema stitching, delegation and binding</ListItem>
-          </List>
-          {
-            // TODO: add engine image
-          }
-        </Slide>
-        <Slide transition={["fade"]} bgColor="primary" textColor="tertiary">
-          <Heading size={6} textColor="secondary" caps>
-            GraphQL @ Arcesium
-          </Heading>
-          {
-            // TODO: add code screenshots
-          }
-        </Slide>
-        <Slide transition={["fade"]} bgColor="primary" textColor="tertiary">
-          <Heading size={6} textColor="secondary" caps>
-            Our verdict
-          </Heading>
-          {
-            // TODO: add code screenshots
-          }
-        </Slide>
-        <Slide transition={["fade"]} bgColor="primary">
-          <Heading size={6} textColor="tertiary" caps>
-            Typography
-          </Heading>
-          <Heading size={1} textColor="secondary">
-            Heading 1
-          </Heading>
-          <Heading size={2} textColor="secondary">
-            Heading 2
-          </Heading>
-          <Heading size={3} textColor="secondary">
-            Heading 3
-          </Heading>
-          <Heading size={4} textColor="secondary">
-            Heading 4
-          </Heading>
-          <Heading size={5} textColor="secondary">
-            Heading 5
-          </Heading>
-          <Text size={6} textColor="secondary">
-            Standard text
+          <Text size={6} textColor="tertiary">
+            Declarative data fetching
           </Text>
-        </Slide>
-        <Slide transition={["fade"]} bgColor="primary" textColor="tertiary">
-          <Heading size={6} textColor="secondary" caps>
-            Standard List
-          </Heading>
-          <List>
-            <ListItem>Item 1</ListItem>
-            <ListItem>Item 2</ListItem>
-            <ListItem>Item 3</ListItem>
-            <ListItem>Item 4</ListItem>
-          </List>
-        </Slide>
-        <Slide transition={["fade"]} bgColor="secondary" textColor="primary">
-          <BlockQuote>
-            <Quote>Example Quote</Quote>
-            <Cite>Author</Cite>
-          </BlockQuote>
-        </Slide>
-        <Slide transition={["zoom"]}>
-          {console.log(order, new Date())}
           <ComponentPlayground
-            code={order}
+            code={ORDER}
             scope={{
               Query,
               gql
@@ -270,12 +236,132 @@ export default class Presentation extends React.Component {
             theme="dark"
           />
         </Slide>
-        <Slide transition={["zoom"]} maxWidth={1000} maxHeight={1000}>
-          <iframe
-            src="http://localhost:4567"
-            style={{ width: "1000px", height: "800px", border: "none" }}
-            title="GraphiQL"
-          />
+        <Slide
+          transition={['zoom', 'fade']}
+          bgColor="primary"
+          textColor="tertiary"
+        >
+          <Heading size={6} textColor="secondary" caps>
+            GraphQL client
+          </Heading>
+          <Text size={6} textColor="tertiary">
+            Local and remote data management
+          </Text>
+          <Table
+            style={{ fontSize: 20, marginTop: 50, marginBottom: 50 }}
+            textColor="quartenary"
+          >
+            <TableHeader>
+              <TableRow>
+                <TableHeaderItem>Feature</TableHeaderItem>
+                <TableHeaderItem>Redux</TableHeaderItem>
+                <TableHeaderItem>MobX</TableHeaderItem>
+                <TableHeaderItem>GraphQL</TableHeaderItem>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              <TableRow>
+                <TableItem>Data binding</TableItem>
+                <TableItem>mapStateToProps</TableItem>
+                <TableItem>inject()</TableItem>
+                <TableItem>&lt;Query&gt; component</TableItem>
+              </TableRow>
+              <TableRow>
+                <TableItem>Actions</TableItem>
+                <TableItem>mapDispatchToProps</TableItem>
+                <TableItem>@action methods</TableItem>
+                <TableItem>&lt;Mutation&gt; component</TableItem>
+              </TableRow>
+              <TableRow>
+                <TableItem>Mutation</TableItem>
+                <TableItem>Reducers</TableItem>
+                <TableItem>@action methods</TableItem>
+                <TableItem>Resolver functions</TableItem>
+              </TableRow>
+              <TableRow>
+                <TableItem>Selectors</TableItem>
+                <TableItem>reselect library</TableItem>
+                <TableItem>@computed</TableItem>
+                <TableItem>Resolver functions</TableItem>
+              </TableRow>
+              <TableRow>
+                <TableItem>State</TableItem>
+                <TableItem>Store</TableItem>
+                <TableItem>@observable</TableItem>
+                <TableItem>Cache</TableItem>
+              </TableRow>
+            </TableBody>
+          </Table>
+          <Image src="/images/react-redux-graphql.png" height={400} />
+        </Slide>
+        <Slide
+          transition={['zoom', 'fade', 'slide', 'spin']}
+          bgColor="primary"
+          textColor="tertiary"
+        >
+          <Heading size={6} textColor="secondary" caps>
+            GraphQL ecosystem
+          </Heading>
+          <List>
+            <Appear>
+              <ListItem>Batching, caching, pagination</ListItem>
+            </Appear>
+            <Appear>
+              <ListItem>Automated persisted queries</ListItem>
+            </Appear>
+            <Appear>
+              <ListItem>Monitoring and tracing</ListItem>
+            </Appear>
+            <Appear>
+              <ListItem>Static type checking and linting</ListItem>
+            </Appear>
+            <Appear>
+              <ListItem>Schema stitching, delegation and binding</ListItem>
+            </Appear>
+          </List>
+          <Appear>
+            <Image src="/images/engine.svg" width={400} />
+          </Appear>
+        </Slide>
+        <Slide
+          transition={['zoom', 'fade']}
+          bgColor="primary"
+          textColor="tertiary"
+        >
+          <Heading size={6} textColor="secondary" caps>
+            GraphQL @ Arcesium
+          </Heading>
+          {
+            // TODO: add code screenshots
+          }
+        </Slide>
+        <Slide
+          transition={['zoom', 'fade', 'slide', 'spin']}
+          bgColor="primary"
+          textColor="tertiary"
+        >
+          <Heading size={6} textColor="secondary" caps>
+            Our verdict
+          </Heading>
+          <Text size={6} textColor="tertiary" caps fit>
+            Go for it
+          </Text>
+        </Slide>
+        <Slide
+          transition={['zoom', 'fade']}
+          bgColor="primary"
+          textColor="tertiary"
+        >
+          <Image src="/images/summary.png" height={900} />
+        </Slide>
+        <Slide
+          transition={['zoom', 'fade', 'slide', 'spin']}
+          bgColor="primary"
+          textColor="tertiary"
+        >
+          <Heading size={6} textColor="secondary" caps>
+            Questions?
+          </Heading>
         </Slide>
       </Deck>
     );

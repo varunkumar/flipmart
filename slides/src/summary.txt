@@ -1,0 +1,29 @@
+----------------------------------------------------------
+GRAPHQL CONCEPTS EXPLORED
+----------------------------------------------------------
+
+Schema  Types  Query  Field  Aliases  Fragments @deprecate
+Arguments   Mutation  Subscription  Defer  Live  Stream  
+Deferred execution  Cache management  Polling  Refetching
+Local state management  Pagination  Prefetching  Linting
+Static type checking  Dev tools  Batching queries  
+Batched query execution  Automatic persisted queries
+Schema directives  Schema delegation Schema sitching
+GraphQL bindings  Monitoring & tracing  Apollo engine
+Authn and Authz  
+
+----------------------------------------------------------
+TECHNOLOGIES USED
+----------------------------------------------------------
+
+graphql-java spqr  apollo-client  react-apollo  react 
+react-native  apollo-android apollo-engine
+
+----------------------------------------------------------
+PROJECTS DONE
+----------------------------------------------------------
+
+FlipMart server  FlipMart Web  FlipMart Mobile(iOS/Android)
+FlipMart light client
+
+Reporting infra integration

@@ -8,9 +8,7 @@
     "react": "^16.4.0",
     "react-apollo": "^2.1.4",
     "react-dom": "^16.4.0",
-    "spectacle-scripts": "2.0.0",
-    "spectacle-theme-solarized-dark": "^1.0.2",
-    "spectacle-theme-solarized-light": "^1.0.0"
+    "spectacle-scripts": "2.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -18,8 +16,6 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-  "devDependencies": {
-    "raw-loader": "^0.5.1"
-  },
-  "proxy": "http://localhost:4567/"
+  "devDependencies": {},
+  "proxy": "http://localhost:4000/"
 }

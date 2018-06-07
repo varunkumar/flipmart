@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="434px" height="302px" viewBox="0 0 434 302" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49 (51002) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 4</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="268" width="103" height="34" rx="17"></rect>
+        <rect id="path-2" x="161" y="268" width="113" height="34" rx="17"></rect>
+        <rect id="path-3" x="331" y="268" width="103" height="34" rx="17"></rect>
+        <rect id="path-4" x="338" y="0" width="80" height="34" rx="17"></rect>
+        <rect id="path-5" x="0" y="0" width="78" height="34" rx="17"></rect>
+        <rect id="path-6" x="178" y="0" width="80" height="34" rx="17"></rect>
+        <rect id="path-7" x="0" y="0" width="191" height="34" rx="17"></rect>
+        <rect id="path-8" x="122" y="113" width="191" height="42" rx="21"></rect>
+    </defs>
+    <g id="engine" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="client" transform="translate(-213.000000, -822.000000)">
+            <g id="Group-4" transform="translate(213.000000, 822.000000)">
+                <path d="M94,-14 C286,-14 150,314 334,314" id="Path-4-Copy" stroke="#14CBC4" stroke-width="2" transform="translate(214.000000, 150.000000) rotate(-270.000000) translate(-214.000000, -150.000000) "></path>
+                <path d="M99,-14 C291,-14 155,314 339,314" id="Path-4-Copy-2" stroke="#14CBC4" stroke-width="2" transform="translate(219.000000, 150.000000) scale(-1, 1) rotate(-270.000000) translate(-219.000000, -150.000000) "></path>
+                <path d="M217.5,28.5 L217.5,269.518671" id="Line-3" stroke="#14CBC4" stroke-width="2"></path>
+                <g id="Rectangle-12-Copy-9">
+                    <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+                    <rect stroke="#14CBC4" stroke-width="2" x="1" y="269" width="101" height="32" rx="16"></rect>
+                </g>
+                <g id="Rectangle-12-Copy-10">
+                    <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-2"></use>
+                    <rect stroke="#14CBC4" stroke-width="2" x="162" y="269" width="111" height="32" rx="16"></rect>
+                </g>
+                <text id="REST-API" font-family="SourceSansPro-Semibold, Source Sans Pro" font-size="14" font-weight="500" letter-spacing="0.5" fill="#343C5A">
+                    <tspan x="23.085" y="290">REST API</tspan>
+                </text>
+                <text id="Microservice-Copy" font-family="SourceSansPro-Semibold, Source Sans Pro" font-size="14" font-weight="500" letter-spacing="0.5" fill="#343C5A">
+                    <tspan x="177.186" y="290">Microservice</tspan>
+                </text>
+                <g id="Rectangle-12-Copy-11">
+                    <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-3"></use>
+                    <rect stroke="#14CBC4" stroke-width="2" x="332" y="269" width="101" height="32" rx="16"></rect>
+                </g>
+                <text id="Database" font-family="SourceSansPro-Semibold, Source Sans Pro" font-size="14" font-weight="500" letter-spacing="0.5" fill="#343C5A">
+                    <tspan x="352.29" y="290">Database</tspan>
+                </text>
+                <circle id="Oval-5-Copy-15" stroke="#14CBC4" stroke-width="2" fill="#FFFFFF" cx="78" cy="100" r="6"></circle>
+                <circle id="Oval-5-Copy-19" stroke="#14CBC4" stroke-width="2" fill="#FFFFFF" cx="75" cy="201" r="6"></circle>
+                <circle id="Oval-5-Copy-18" stroke="#14CBC4" stroke-width="2" fill="#FFFFFF" cx="218" cy="241" r="6"></circle>
+                <circle id="Oval-5-Copy-17" stroke="#14CBC4" stroke-width="2" fill="#FFFFFF" cx="343" cy="112" r="6"></circle>
+                <circle id="Oval-5-Copy-20" stroke="#14CBC4" stroke-width="2" fill="#FFFFFF" cx="338" cy="185" r="6"></circle>
+                <g id="Rectangle-12-Copy-7">
+                    <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-4"></use>
+                    <rect stroke="#14CBC4" stroke-width="2" x="339" y="1" width="78" height="32" rx="16"></rect>
+                </g>
+                <g id="diagram-primary" transform="translate(15.000000, 0.000000)">
+                    <g id="diagram-button">
+                        <g id="Rectangle-12-Copy-5">
+                            <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-5"></use>
+                            <rect stroke="#14CBC4" stroke-width="2" x="1" y="1" width="76" height="32" rx="16"></rect>
+                        </g>
+                        <text id="Browser" font-family="SourceSansPro-Semibold, Source Sans Pro" font-size="14" font-weight="500" letter-spacing="0.5" fill="#343C5A">
+                            <tspan x="25.153" y="22">Web</tspan>
+                        </text>
+                    </g>
+                </g>
+                <g id="Rectangle-12-Copy-6">
+                    <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-6"></use>
+                    <rect stroke="#14CBC4" stroke-width="2" x="179" y="1" width="78" height="32" rx="16"></rect>
+                </g>
+                <text id="Android" font-family="SourceSansPro-Semibold, Source Sans Pro" font-size="14" font-weight="500" letter-spacing="0.5" fill="#343C5A">
+                    <tspan x="352.31" y="22">Android</tspan>
+                </text>
+                <text id="iOS" font-family="SourceSansPro-Semibold, Source Sans Pro" font-size="14" font-weight="500" letter-spacing="0.5" fill="#343C5A">
+                    <tspan x="207.383" y="22">iOS</tspan>
+                </text>
+                <g id="diagram-primary" transform="translate(122.000000, 152.000000)">
+                    <g id="diagram-button">
+                        <g id="Rectangle-12-Copy-5">
+                            <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-7"></use>
+                            <rect stroke="#14CBC4" stroke-width="2" x="1" y="1" width="189" height="32" rx="16"></rect>
+                        </g>
+                        <text id="Browser" font-family="SourceSansPro-Semibold, Source Sans Pro" font-size="14" font-weight="500" letter-spacing="0.5" fill="#343C5A">
+                            <tspan x="44.358" y="22">GraphQL Server</tspan>
+                        </text>
+                    </g>
+                </g>
+                <g id="Rectangle-12-Copy-8">
+                    <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-8"></use>
+                    <rect stroke="#E535AB" stroke-width="2" x="123" y="114" width="189" height="40" rx="20"></rect>
+                </g>
+                <text id="Apollo-Engine" font-family="SourceSansPro-Semibold, Source Sans Pro" font-size="14" font-weight="500" letter-spacing="0.5" fill="#343C5A">
+                    <tspan x="184.852" y="139">Apollo Engine</tspan>
+                </text>
+                <g id="apollo-mark" transform="translate(158.000000, 124.000000)">
+                    <g id="Group-3">
+                        <circle id="Oval-3" fill="#FFFFFF" cx="11" cy="11" r="11"></circle>
+                        <g id="icon-apollo-space" transform="translate(2.200000, 0.200000)">
+                            <g id="Layer_2" transform="translate(0.000000, 0.000000)">
+                                <g id="Apollo_icon_grey-link" transform="translate(9.500000, 10.100000) scale(-1, 1) rotate(-180.000000) translate(-9.500000, -10.100000) translate(0.000000, 0.600000)">
+                                    <g id="Apollo_icon_grey" transform="translate(-0.000000, 0.000000)">
+                                        <polygon id="Shape" points="16.8347826 0.510144928 0.510144928 0.510144928 0.510144928 16.8347826 16.8347826 16.8347826"></polygon>
+                                        <g id="Group" transform="translate(0.045913, 0.045913)" fill="#343C5A" fill-rule="nonzero">
+                                            <polygon id="Shape" points="9.65633466 12.98031 7.58110989 12.98031 4.58488974 5.20402004 6.4618098 5.20402004 6.95160124 6.52140165 9.78277205 6.52140165 9.2701036 7.97883527 7.40624018 7.97883527 8.61872228 11.3247948 10.7757463 5.20402004 12.6526664 5.20402004"></polygon>
+                                            <path d="M16.8371525,10.9008446 C16.8321307,10.9274043 16.824877,10.9529596 16.8152798,10.9776221 C16.8129363,10.9861033 16.8050131,11.0020615 16.8050131,11.0020615 C16.7372748,11.1490324 16.5889647,11.2513652 16.4164385,11.2513652 C16.1800798,11.2513652 15.9884708,11.0597562 15.9884708,10.8233975 C15.9884708,10.7753 15.9967289,10.7293227 16.0113478,10.686247 L16.0102319,10.6858006 C16.1989394,10.0132162 16.2965852,9.31061266 16.2965852,8.59283219 C16.2965852,6.53512787 15.4952199,4.60051308 14.0402414,3.14542296 C12.5851513,1.69022125 10.6505365,0.888967548 8.59283219,0.888967548 C6.53512787,0.888967548 4.60040148,1.69033285 3.14542296,3.14542296 C1.69022125,4.60051308 0.888967548,6.53512787 0.888967548,8.59283219 C0.888967548,10.6505365 1.69033285,12.5851513 3.14542296,14.0402414 C4.60040148,15.4954431 6.53512787,16.2965852 8.59283219,16.2965852 C10.4303591,16.2965852 12.1692359,15.6571446 13.5564761,14.4842788 C13.5098293,14.3656531 13.4838276,14.2365374 13.4838276,14.101284 C13.4838276,13.5234439 13.9523044,13.0550788 14.5300328,13.0550788 C15.1078729,13.0550788 15.5763497,13.5234439 15.5763497,14.101284 C15.5763497,14.6791241 15.1078729,15.1474892 14.5300328,15.1474892 C14.4040418,15.1474892 14.2831842,15.1252818 14.1711426,15.0844379 C12.6729767,16.3732511 10.7241894,17.1527438 8.59283219,17.1527438 C3.86532375,17.1527438 0.0330321861,13.3203406 0.0330321861,8.59283219 C0.0330321861,3.86532375 3.86532375,0.0329205908 8.59283219,0.0329205908 C13.320229,0.0329205908 17.1526322,3.86532375 17.1526322,8.59283219 C17.1526322,9.39252355 17.0422645,10.166548 16.8371525,10.9008446 Z" id="Shape"></path>
+                                        </g>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
