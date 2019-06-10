@@ -5,6 +5,7 @@
   "main": "./src/entry.js",
   "devDependencies": {
     "babel-eslint": "^8.2.3",
+    "braces": "^2.3.1",
     "eslint": "^4.19.1",
     "eslint-config-react-app": "^2.1.0",
     "eslint-plugin-flowtype": "^2.47.1",
@@ -12,8 +13,8 @@
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.8.2",
     "eslint-plugin-react-native": "^3.2.1",
-    "jest-expo": "^27.0.1",
-    "react-native-scripts": "1.14.0",
+    "jest-expo": "^33.0.2",
+    "react-native-scripts": "^2.0.1",
     "react-test-renderer": "^16.4.0"
   },
   "scripts": {
@@ -28,11 +29,11 @@
   },
   "dependencies": {
     "apollo-boost": "^0.1.7",
-    "expo": "^27.0.2",
+    "expo": "^33.0.5",
     "graphql": "^0.13.2",
     "react": "^16.4.0",
-    "react-apollo": "^2.1.4",
-    "react-native": "^0.55.4",
+    "react-apollo": "^2.5.6",
+    "react-native": "^0.59.9",
     "react-native-snap-carousel": "^3.7.0",
     "react-navigation": "^2.0.4"
   }
