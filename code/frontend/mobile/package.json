@@ -6,16 +6,17 @@
   "devDependencies": {
     "babel-eslint": "^8.2.3",
     "braces": "^2.3.1",
-    "eslint": "^4.19.1",
+    "eslint": "^7.18.0",
     "eslint-config-react-app": "^2.1.0",
     "eslint-plugin-flowtype": "^2.47.1",
     "eslint-plugin-import": "^2.12.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.8.2",
     "eslint-plugin-react-native": "^3.2.1",
-    "jest-expo": "^33.0.2",
+    "jest-expo": "^40.0.1",
+    "node-fetch": "^3.0.0-beta.9",
     "react-native-scripts": "^2.0.1",
-    "react-test-renderer": "^16.4.0"
+    "react-test-renderer": "^17.0.1"
   },
   "scripts": {
     "start": "react-native-scripts start",
@@ -29,12 +30,12 @@
   },
   "dependencies": {
     "apollo-boost": "^0.1.7",
-    "expo": "^33.0.5",
+    "expo": "^40.0.0",
     "graphql": "^0.13.2",
-    "react": "^16.4.0",
+    "react": "^17.0.1",
     "react-apollo": "^2.5.6",
-    "react-native": "^0.59.9",
+    "react-native": "^0.63.4",
     "react-native-snap-carousel": "^3.7.0",
-    "react-navigation": "^2.0.4"
+    "react-navigation": "^4.4.3"
   }
 }
