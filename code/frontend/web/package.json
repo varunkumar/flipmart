@@ -4,11 +4,11 @@
   "dependencies": {
     "apollo-boost": "^0.1.6",
     "graphql": "^0.13.2",
-    "prop-types": "^15.6.1",
+    "prop-types": "^15.7.2",
     "react": "^16.3.2",
     "react-animate-css": "0.0.1",
     "react-apollo": "^2.5.6",
-    "react-dom": "^16.3.2",
+    "react-dom": "^16.14.0",
     "react-materialize": "^2.2.1",
     "react-router-dom": "^4.2.2",
     "react-scripts": "^3.0.1"
@@ -19,5 +19,9 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-  "proxy": "http://localhost:4000/"
+  "proxy": "http://localhost:4000/",
+  "devDependencies": {
+    "react-dev-utils": "^11.0.4",
+    "xmldom": "^0.5.0"
+  }
 }
