@@ -46,7 +46,7 @@
     "react-native": "^0.64.1",
     "react-native-snap-carousel": "^3.7.0",
     "react-navigation": "^4.4.3",
-    "tar": "~6.1.2",
+    "tar": "~6.1.9",
     "ua-parser-js": "^0.7.28",
     "url-parse": "~1.5.2",
     "ws": "~7.4.6"
