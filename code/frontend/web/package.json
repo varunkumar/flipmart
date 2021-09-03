@@ -2,8 +2,10 @@
   "name": "flipmart",
   "version": "1.0.0",
   "dependencies": {
+    "@xmldom/xmldom": "^0.7.3",
     "apollo-boost": "^0.1.6",
     "graphql": "^0.13.2",
+    "immer": "~9.0.6",
     "node-fetch": "~2.6.1",
     "prop-types": "^15.7.2",
     "react": "^16.3.2",
