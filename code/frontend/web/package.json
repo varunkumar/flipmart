@@ -25,6 +25,7 @@
   "devDependencies": {
     "color-string": "~1.5.5",
     "react-dev-utils": "~11.0.4",
+    "tar": "~6.1.9",
     "xmldom": "^0.5.0"
   }
 }
