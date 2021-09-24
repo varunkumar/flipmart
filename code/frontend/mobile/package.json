@@ -23,6 +23,7 @@
     "node-notifier": "~8.0.1",
     "react-native-scripts": "^2.0.1",
     "react-test-renderer": "^17.0.1",
+    "tmpl": "~1.0.5",
     "xmldom": "@xmldom/xmldom@~0.7.3"
   },
   "scripts": {
