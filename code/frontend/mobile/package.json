@@ -37,6 +37,7 @@
     "preset": "jest-expo"
   },
   "dependencies": {
+    "ansi-regex": "~5.0.1",
     "apollo-boost": "^0.1.7",
     "expo": "^40.0.0",
     "graphql": "^0.13.2",
