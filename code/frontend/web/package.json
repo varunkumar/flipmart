@@ -4,6 +4,7 @@
   "dependencies": {
     "@xmldom/xmldom": "^0.7.3",
     "apollo-boost": "^0.1.6",
+    "follow-redirects": "~1.14.7",
     "graphql": "^0.13.2",
     "node-fetch": "~2.6.1",
     "prop-types": "^15.7.2",
