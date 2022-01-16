@@ -6,7 +6,9 @@
     "apollo-boost": "^0.1.6",
     "follow-redirects": "~1.14.7",
     "graphql": "^0.13.2",
+    "json-schema": "^0.4.0",
     "node-fetch": "~2.6.1",
+    "postcss": "^8.2.13",
     "prop-types": "^15.7.2",
     "react": "^16.3.2",
     "react-animate-css": "0.0.1",
@@ -28,8 +30,10 @@
   "devDependencies": {
     "color-string": "~1.5.5",
     "immer": "~9.0.6",
+    "node-forge": "~1.0.0",
     "nth-check": "~2.0.1",
     "react-dev-utils": "^11.0.4",
+    "shelljs": "^0.8.5",
     "tar": "~6.1.9",
     "tmpl": "~1.0.5",
     "xmldom": "@xmldom/xmldom@~0.7.3"
