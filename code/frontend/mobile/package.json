@@ -20,7 +20,7 @@
     "immer": "~9.0.6",
     "jest-expo": "^40.0.1",
     "json-schema": "^0.4.0",
-    "node-fetch": "^3.0.0-beta.9",
+    "node-fetch": "^3.1.1",
     "node-notifier": "~8.0.1",
     "react-native-scripts": "^2.0.1",
     "react-test-renderer": "^17.0.1",
