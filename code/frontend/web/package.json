@@ -2,7 +2,7 @@
   "name": "flipmart",
   "version": "1.0.0",
   "dependencies": {
-    "@xmldom/xmldom": "^0.7.3",
+    "@xmldom/xmldom": "^0.8.1",
     "ansi-regex": "^6.0.1",
     "apollo-boost": "^0.1.6",
     "follow-redirects": "~1.14.8",
